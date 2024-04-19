@@ -1,4 +1,4 @@
-name: test-and-deploy
+name: test-and-deploy-python-project
 
 on:
   workflow_call:
