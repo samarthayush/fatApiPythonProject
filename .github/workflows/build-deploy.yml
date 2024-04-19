@@ -26,7 +26,22 @@ jobs:
           pip install -r requirements-dev.txt
       - name: Test with pytest
         run: python -m pytest ./tests
-  
+
+  publish_image:
+    runs-on: ubuntu-latest
+    steps:
+        - name: checkout
+          uses: actions/checkout@v3
+        - name: build
+          run: |
+            docker build . -t ayushsamarth/hello-docker-hub: latest
+        - name: publish
+          run: |
+            docker login -u ayushsamarth -p ${{ secrets.DOCKERHUB_TOKEN }}
+            docker push ayushsamarth/hello-docker-hub:latest
+            
+
+
   docker:
     needs: test
     runs-on: ubuntu-latest
