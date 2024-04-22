@@ -65,6 +65,7 @@ jobs:
         with:
           push: true
           context: .
+          file: ./Dockerfile  # Path to your Dockerfile
           tags: pedrojunqueria/mycontainer:latest
 
   deploy-azure:
